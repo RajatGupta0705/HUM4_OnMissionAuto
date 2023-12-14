@@ -12,7 +12,8 @@ public class RunnerClassUtility
     public static void main(String [] args) throws  Exception
     {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter browser name");
+        // Take browser name
+        System.out.println("Enter browser");
         String browserName= sc.nextLine();
         sc.close();
         BrowserUtilities bobj = new BrowserUtilities();
