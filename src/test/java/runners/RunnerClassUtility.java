@@ -24,8 +24,7 @@ public class RunnerClassUtility
         System.out.println(bobj.getTitle(driver));
         Thread.sleep(2000);
         LoginLogout lobj= new LoginLogout(driver);
-        boolean loginresult= lobj.loginIntoSite("locked_out_user", "secret_sauce", cr );
-        if(loginresult) System.out.println("user not able to logs in successfully for "+cr);
+        lobj.loginIntoSite(cr);
         Thread.sleep(5000);
         /*boolean logoutresult= lobj.logoutSite();
         if (logoutresult) System.out.println("user logs out successfully");
