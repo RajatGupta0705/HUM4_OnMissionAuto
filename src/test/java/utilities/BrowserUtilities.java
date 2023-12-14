@@ -8,7 +8,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BrowserUtilities
 {
-    public RemoteWebDriver driver;
+    private RemoteWebDriver driver;
     public BrowserUtilities()
     {
         this.driver=null;
@@ -29,9 +29,11 @@ public class BrowserUtilities
         }
         return this.driver;
     }
-    public  void launchSite(RemoteWebDriver driver, String url)
+    public  void launchSite(RemoteWebDriver driver, String url) throws Exception
     {
         this.driver= driver;
+        this.driver.manage().window().maximize();
+        Thread.sleep(2000);
         this.driver.get(url);
     }
     public String getTitle(RemoteWebDriver driver)
@@ -45,5 +47,4 @@ public class BrowserUtilities
         this.driver= driver;
         this.driver.close();
     }
-
 }

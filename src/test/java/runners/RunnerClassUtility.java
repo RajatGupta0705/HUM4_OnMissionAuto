@@ -22,7 +22,13 @@ public class RunnerClassUtility
         Thread.sleep(2000);
         System.out.println(bobj.getTitle(driver));
         Thread.sleep(2000);
+        LoginLogout lobj= new LoginLogout(driver);
+        boolean loginresult= lobj.loginIntoSite("standard_user", "secret_sauce");
+        if(loginresult) System.out.println("user logs in successfully");
+        Thread.sleep(5000);
+        boolean logoutresult= lobj.logoutSite();
+        if (logoutresult) System.out.println("user logs out successfully");
+        Thread.sleep(2000);
         bobj.closeSite(driver);
-
     }
 }
