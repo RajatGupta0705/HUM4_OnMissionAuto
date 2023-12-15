@@ -1,10 +1,6 @@
 
 ]
 -src/test/java/runners/RunnerClassUtility.java,9\1\9181921554b8c3c6d403d9c2e6d9531a580c6734
-Q
-!src/test/java/runners/ramesh.java,9\d\9d5c5142048540983de3469d39443b742462adfc
-V
-&src/test/java/runners/LoginLogout.java,f\0\f0a0eb0821c0faf162614073e19e7c3c14f7fb1a
 L
 src/test/java/MainDummy.java,f\0\f025ded540daa4ebbf587759d0e10036e4c57446
 O
