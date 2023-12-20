@@ -31,8 +31,8 @@ public class LoginLogout
         boolean success = false;
         if (criteria.equalsIgnoreCase("valid"))
         {
-            String valid_user1 =  PropertiesUtility.getPropertyValue("C:\\projectAuto\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "valid_user");
-            String password1 =  PropertiesUtility.getPropertyValue("C:\\projectAuto\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "password");
+            String valid_user1 =  PropertiesUtility.getPropertyValue("C:\\Git_AUTO\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "valid_user");
+            String password1 =  PropertiesUtility.getPropertyValue("C:\\Git_AUTO\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "password");
             this.driver.findElement(username).sendKeys(valid_user1);
             Thread.sleep(1000);
             this.driver.findElement(password).sendKeys(password1);
@@ -49,8 +49,8 @@ public class LoginLogout
         }
         else if(criteria.equalsIgnoreCase("locked user"))
         {
-            String valid_user2 =  PropertiesUtility.getPropertyValue("C:\\projectAuto\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "locked_user");
-            String password2 =  PropertiesUtility.getPropertyValue("C:\\projectAuto\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "password");
+            String valid_user2 =  PropertiesUtility.getPropertyValue("C:\\Git_AUTO\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "locked_user");
+            String password2 =  PropertiesUtility.getPropertyValue("C:\\Git_AUTO\\HUM4_OnMissionAuto\\src\\test\\java\\resourceFiles\\users.properties" , "password");
             this.driver.findElement(username).sendKeys(valid_user2);
             Thread.sleep(1000);
             this.driver.findElement(password).sendKeys(password2);
