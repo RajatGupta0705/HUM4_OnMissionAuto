@@ -38,7 +38,6 @@ public class AddToCart
         catch (Exception ex)
         {
             System.out.println("User is not on product selection page");
-            System.out.println(ex.getMessage());
             return false;
         }
     }

@@ -13,7 +13,7 @@ public class RunnerAddToCart
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter No. of items tobe added in cart");
         int noOfItems = sc.nextInt();
-        String[] criterias = {"locked user"};
+        String[] criterias = {"valid"};
         String[] browsers = {"chrome"};
 
         for (String cr : criterias)
@@ -51,6 +51,8 @@ public class RunnerAddToCart
                         Thread.sleep(3000);
                         bobj.closeSite(driver);
                     }
+                } else {
+                    bobj.closeSite(driver);
                 }
             }
         }
