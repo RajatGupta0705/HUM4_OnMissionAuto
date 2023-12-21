@@ -19,6 +19,9 @@ public class AddToCart
     private WebElement inventory_list;
     @FindBys({@FindBy (xpath = "//*[@class='inventory_item']")})
     private List<WebElement> itmesList;
+    @FindBy(xpath = "//*[@class= 'shopping_cart_badge']")
+    private WebElement cart_count;
+
     public AddToCart (RemoteWebDriver driver)
     {
         this.driver=driver;
@@ -54,25 +57,36 @@ public class AddToCart
             return false;
         }
     }
-    public void displayItemList()
+    public List<WebElement> displayItemList()
     {
+        System.out.println("Item list contains below items");
         for (WebElement e : itmesList)
         {
-            System.out.println("Item list contains below items");
             System.out.printf(e.findElement(By.xpath("div[2]/div/a/div")).getText()+"\n");
         }
+        return itmesList;
     }
-    public void addToCart() //div[2]/div[2]/button
+    public void addToCart(int itemsToBeAdded) throws Exception
     {
-        String text= itmesList.get(0).findElement(By.xpath("div[2]/div[2]/button")).getText();
-        if(text.equals("Add to cart"))
+        for(int i=0; i<itemsToBeAdded; i++)
         {
-            try {
-                itmesList.get(0).findElement(By.xpath("div[2]/div[2]/button")).click();
-            } catch (Exception ex) {
-                System.out.println();
+            String text= itmesList.get(i).findElement(By.xpath("div[2]/div[2]/button")).getText();
+            if(text.equals("Add to cart"))
+            {
+                try {
+                    itmesList.get(i).findElement(By.xpath("div[2]/div[2]/button")).click();
+                } catch (Exception ex) {
+                    System.out.println();
+                }
             }
+            else System.out.println("item already added into the cart");
+            Thread.sleep(2000);
         }
-        else System.out.println("item already added into the cart");
+
+    }
+    public int getCartCount()
+    {
+        int count = Integer.parseInt(this.cart_count.getText());
+        return count;
     }
 }
