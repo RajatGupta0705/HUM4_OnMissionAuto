@@ -18,17 +18,17 @@ public class Dummy
 {
     public static void main(String [] args) throws Exception
     {
-        RemoteWebDriver driver = new ChromeDriver();
-        WebDriverWait wait=  new WebDriverWait(driver,Duration.ofSeconds(20));
-        wait.withTimeout(Duration.ofSeconds(1));
-        wait.pollingEvery(Duration.ofMillis(100));
-        driver.get("https://www.saucedemo.com/"); //automissionmissionauto@gmail.com
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        Thread.sleep(2000);
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
-        Thread.sleep(2000);
-        System.out.println(driver.findElement(By.xpath("(//*[@class='inventory_item'])[1]/div[2]/div/a/div")).getText());
+//        RemoteWebDriver driver = new ChromeDriver();
+//        WebDriverWait wait=  new WebDriverWait(driver,Duration.ofSeconds(20));
+//        wait.withTimeout(Duration.ofSeconds(1));
+//        wait.pollingEvery(Duration.ofMillis(100));
+//        driver.get("https://www.saucedemo.com/"); //automissionmissionauto@gmail.com
+//        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+//        Thread.sleep(2000);
+//        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+//        driver.findElement(By.id("login-button")).click();
+//        Thread.sleep(2000);
+//        System.out.println(driver.findElement(By.xpath("(//*[@class='inventory_item'])[1]/div[2]/div/a/div")).getText());
 
 //        System.out.println(System.currentTimeMillis());
 //
@@ -84,6 +84,7 @@ public class Dummy
 //        driver.get("https://www.amazon.com/");
 //        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("cricket kit", Keys.ENTER);
 //        if(driver.findElement(By.xpath("//span[text()='Featured']")).isDisplayed()) System.out.println("true");
+        System.out.println(System.getProperty("users.properties"));
 
     }
 }

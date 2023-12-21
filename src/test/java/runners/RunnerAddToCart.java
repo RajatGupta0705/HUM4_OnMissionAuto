@@ -15,7 +15,8 @@ public class RunnerAddToCart
         for (String cr : criterias)
         {
             System.out.println("Running for " + cr + " criteria.");
-            for (int i = 0; i < browsers.length; i++) {
+            for (int i = 0; i < browsers.length; i++)
+            {
                 System.out.println("Running on " + browsers[i] + " browser");
                 BrowserUtilities bobj = new BrowserUtilities();
                 RemoteWebDriver driver = bobj.getDriver(browsers[i]);
@@ -24,13 +25,19 @@ public class RunnerAddToCart
                 LoginLogout lobj = new LoginLogout(driver);
                 lobj.loginIntoSite(cr, browsers[i]);
                 AddToCart aobj = new AddToCart(driver);
-                aobj.itemListVisibility();
-                Thread.sleep(6000);
-                aobj.addToCart();
-                Thread.sleep(5000);
-                lobj.logoutSite();
-                Thread.sleep(3000);
-                bobj.closeSite(driver);
+                if(aobj.productPageVisibility())
+                {
+                    if(aobj.itemListVisibility())
+                    {
+                        aobj.displayItemList();
+                        Thread.sleep(6000);
+                        aobj.addToCart();
+                        Thread.sleep(5000);
+                        lobj.logoutSite();
+                        Thread.sleep(3000);
+                        bobj.closeSite(driver);
+                    }
+                }
             }
         }
     }

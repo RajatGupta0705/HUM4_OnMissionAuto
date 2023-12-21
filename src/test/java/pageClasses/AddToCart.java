@@ -24,34 +24,42 @@ public class AddToCart
         this.driver=driver;
         PageFactory.initElements(driver, this);
     }
-    public void productPageVisibility()
+    public boolean productPageVisibility()
     {
         try
         {
             this.product.isDisplayed();
             System.out.println("User is on product selection page");
+            return true;
         }
         catch (Exception ex)
         {
             System.out.println("User is not on product selection page");
             System.out.println(ex.getMessage());
+            return false;
         }
     }
-    public void itemListVisibility()
+    public boolean itemListVisibility()
     {
         try
         {
             this.inventory_list.isDisplayed();
             System.out.println("User is able to see the items");
-            for (WebElement e : itmesList)
-            {
-                System.out.println(e.findElement(By.xpath("div[2]/div/a/div")).getText());
-            }
-
+            return true;
         }
         catch (Exception ex)
         {
             System.out.println(ex.getMessage());
+            System.out.println("User is on product page but item list is not visible");
+            return false;
+        }
+    }
+    public void displayItemList()
+    {
+        for (WebElement e : itmesList)
+        {
+            System.out.println("Item list contains below items");
+            System.out.printf(e.findElement(By.xpath("div[2]/div/a/div")).getText()+"\n");
         }
     }
     public void addToCart() //div[2]/div[2]/button
