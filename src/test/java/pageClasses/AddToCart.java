@@ -22,6 +22,8 @@ public class AddToCart
     @FindBy(xpath = "//*[@class= 'shopping_cart_badge']")
     private WebElement cart_count;
 
+
+
     public AddToCart (RemoteWebDriver driver)
     {
         this.driver=driver;
