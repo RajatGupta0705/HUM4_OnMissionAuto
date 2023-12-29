@@ -88,6 +88,7 @@ public class AddToCart
     public int getCartCount()
     {
         int count = Integer.parseInt(this.cart_count.getText());
+        System.out.println(count+" items are added in the cart");
         return count;
     }
 }

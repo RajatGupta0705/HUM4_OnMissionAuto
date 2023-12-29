@@ -8,7 +8,7 @@ import utilities.BrowserUtilities;
 
 import java.util.Scanner;
 
-public class RunnerAddToCart
+public class RunnerCartDataVerification
 {
     public static void main(String []args) throws Exception {
         Scanner sc = new Scanner(System.in);
@@ -43,7 +43,15 @@ public class RunnerAddToCart
                             {
                                 System.out.println("Required no of items added in cart");
                                 CartDataVerification cdv = new CartDataVerification(driver);
-                              //  cdv.displayNewlyAddedItems();
+                                cdv.clickOnCartButton();
+                                Thread.sleep(1000);
+                                cdv.validateCartCount();
+                                Thread.sleep(1000);
+                                cdv.validateItemsAreClickable();
+                                Thread.sleep(1000);
+                                cdv.validatePriceVisibility();
+                                Thread.sleep(1000);
+                                cdv.validateRomvebuttonVisibility();
                                 Thread.sleep(4000);
                             }
                         }
