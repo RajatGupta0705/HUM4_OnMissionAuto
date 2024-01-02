@@ -16,36 +16,29 @@ public class CartDataVerification {
     private WebElement cartIcon;
 
     @FindBy(xpath = "//*[text()='Your Cart']")
-    private WebElement cartPage;
+    public WebElement cartPage;
 
     @FindBys({@FindBy(xpath = "//*[@class = 'cart_item']")})
     private List<WebElement> cartItemList;
-    private AddToCart cartCount;
 
+    @FindBy(id="continue-shopping")
+    private  WebElement continueShoppingButton;
+
+    @FindBy(id="checkout")
+    private WebElement checkoutButton;
+    private CheckoutPageValidation checkout;
+    private AddToCart addCart;
     public CartDataVerification(RemoteWebDriver driver) {
 
         this.driver = driver;
-        cartCount = new AddToCart(driver);
         PageFactory.initElements(driver, this);
+        addCart = new AddToCart(driver);
+        checkout = new CheckoutPageValidation(driver);
     }
-
-//    public List<WebElement> displayNewlyAddedItems() {
-//        System.out.println("Displaying newly added cart items");
-//        try {
-//            cartIcon.click();
-//            Thread.sleep(3000);
-//            for (WebElement cl : cartItemList) {
-//                System.out.println(cl.findElement(By.xpath("div[2]/a/div")).getText() + "\n");
-//            }
-//
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//        return cartItemList;
-//    }
     public void validateCartCount()
     {
-        int itemCount = cartCount.getCartCount();
+        int itemCount = addCart.getCartCount();
+        System.out.println(itemCount+" items are added into the cart");
         if(itemCount==cartItemList.size())
         {
             System.out.println("Number of items added are available in the cart");
@@ -54,6 +47,8 @@ public class CartDataVerification {
     }
     public void clickOnCartButton() throws Exception
     {
+        this.driver.executeScript("arguments[0].scrollIntoView();",cartIcon);
+        Thread.sleep(2000);
         this.cartIcon.click();
         Thread.sleep(2000);
         if(cartPage.isDisplayed()) System.out.println("user is successfully landed on cart page");
@@ -64,6 +59,7 @@ public class CartDataVerification {
         int flag=0;
         for (WebElement e : cartItemList)
         {
+            this.driver.executeScript("arguments[0].scrollIntoView();",e);
             if(e.findElement(By.xpath("div[2]/a")).getAttribute("href").equalsIgnoreCase(null))
             {
                 System.out.println(e.findElement(By.xpath("div[2]/div/a/div")).getText()+" is not clickable");
@@ -78,6 +74,7 @@ public class CartDataVerification {
         int flag=0;
         for (WebElement e : cartItemList)
         {
+            this.driver.executeScript("arguments[0].scrollIntoView();",e);
             if(e.findElement(By.xpath("div[2]/div[2]/div")).getText().equalsIgnoreCase(null))
             {
                 System.out.println("price for the item"+ "\""+e.findElement(By.xpath("div[2]/div[2]/div")).getText()+"\" is not visible");
@@ -92,6 +89,7 @@ public class CartDataVerification {
         int flag=0;
         for (WebElement e : cartItemList)
         {
+            this.driver.executeScript("arguments[0].scrollIntoView();",e);
             boolean x= e.findElement(By.xpath("div[2]/div[2]/button")).isDisplayed();
             if(x=false)
             {
@@ -102,4 +100,44 @@ public class CartDataVerification {
         if (flag==0) System.out.println("Remove button for all items added in the cart is visible");
         else System.out.println("Remove button for all items added in the cart is not visible");
     }
+
+    public void validateContinueShoppingButton()
+    {
+        if(continueShoppingButton.isDisplayed())
+        {
+            this.driver.executeScript("arguments[0].scrollIntoView();",continueShoppingButton);
+            if(continueShoppingButton.isEnabled())
+            {
+                continueShoppingButton.click();
+                if(addCart.productPageVisibility())
+                {
+                    this.driver.executeScript("arguments[0].scrollIntoView();",cartIcon);
+                    System.out.println("\"continue shopping\" button is working fine");
+                }
+                else System.out.println("\"continue shopping\" is not working as expected");
+            }
+            else System.out.println("continue shopping button is not enabled");
+        }
+        else System.out.println("continue shopping button is not visible");
+    }
+    public void validateCheckoutButton() throws Exception
+    {
+        if(checkoutButton.isDisplayed())
+        {
+            this.driver.executeScript("arguments[0].scrollIntoView();",checkoutButton);
+            if(checkoutButton.isEnabled())
+            {
+                checkoutButton.click();
+                if(checkout.checkoutPage.isDisplayed())
+                {
+                  Thread.sleep(1000);
+                  System.out.println("\"checkout\" button is working fine");
+                }
+                else System.out.println("\"checkout\" is not working as expected");
+            }
+            else System.out.println("checkout button is not enabled");
+        }
+        else System.out.println("checkout button is not visible");
+    }
+
 }

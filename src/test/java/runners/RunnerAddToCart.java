@@ -35,7 +35,7 @@ public class RunnerAddToCart
                     if(aobj.itemListVisibility())
                     {
                         Thread.sleep(6000);
-                        if(noOfItems<=aobj.displayItemList().size())
+                        if(noOfItems<=aobj.availableItems())
                         {
                             aobj.addToCart(noOfItems);
                             Thread.sleep(5000);

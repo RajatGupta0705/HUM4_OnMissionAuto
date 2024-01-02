@@ -3,17 +3,18 @@ package runners;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pageClasses.AddToCart;
 import pageClasses.CartDataVerification;
+import pageClasses.CheckoutPageValidation;
 import pageClasses.LoginLogout;
 import utilities.BrowserUtilities;
 
 import java.util.Scanner;
 
-public class RunnerCartDataVerification
+public class RunnerCheckoutPageValidation
 {
     public static void main(String []args) throws Exception {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter No. of items to be added in cart");
-        int noOfItems = sc.nextInt();
+        System.out.println("Enter No. of items tobe added in cart");
+        int noOfItems = Integer.parseInt(sc.nextLine());
         String[] criterias = {"valid"};
         String[] browsers = {"chrome"};
 
@@ -43,6 +44,7 @@ public class RunnerCartDataVerification
                             {
                                 System.out.println("Required no of items added in cart");
                                 CartDataVerification cdv = new CartDataVerification(driver);
+                                CheckoutPageValidation checkout = new CheckoutPageValidation(driver);
                                 cdv.clickOnCartButton();
                                 Thread.sleep(1000);
                                 cdv.validateCartCount();
@@ -58,6 +60,19 @@ public class RunnerCartDataVerification
                                 cdv.clickOnCartButton();
                                 Thread.sleep(1000);
                                 cdv.validateCheckoutButton();
+                                checkout.checkoutPageValidation();
+                                Thread.sleep(500);
+                                checkout.fillUserDetails();
+                                Thread.sleep(2000);
+                                checkout.validateCancelButton();
+                                Thread.sleep(1000);
+                                cdv.validateCheckoutButton();
+                                Thread.sleep(1000);
+                                checkout.fillUserDetails();
+                                Thread.sleep(1000);
+                                checkout.clickContinueButton();
+                                Thread.sleep(2000);
+
                             }
                         }
                         else
