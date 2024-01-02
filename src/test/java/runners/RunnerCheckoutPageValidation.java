@@ -58,6 +58,8 @@ public class RunnerCheckoutPageValidation
                                 cdv.validateContinueShoppingButton();
                                 Thread.sleep(1000);
                                 cdv.clickOnCartButton();
+                                Thread.sleep(4000);
+                                cdv.removeCartItems();
                                 Thread.sleep(1000);
                                 cdv.validateCheckoutButton();
                                 checkout.checkoutPageValidation();
