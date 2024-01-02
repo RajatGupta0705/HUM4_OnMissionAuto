@@ -2,6 +2,7 @@ package runners;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pageClasses.AddToCart;
+import pageClasses.CartDataVerification;
 import pageClasses.LoginLogout;
 import utilities.BrowserUtilities;
 
@@ -34,13 +35,16 @@ public class RunnerAddToCart
                     if(aobj.itemListVisibility())
                     {
                         Thread.sleep(6000);
-                        if(noOfItems<=aobj.displayItemList().size())
+                        if(noOfItems<=aobj.availableItems())
                         {
                             aobj.addToCart(noOfItems);
                             Thread.sleep(5000);
                             if(aobj.getCartCount()== noOfItems)
                             {
                                 System.out.println("Required no of items added in cart");
+                                CartDataVerification cdv = new CartDataVerification(driver);
+                              //  cdv.displayNewlyAddedItems();
+                                Thread.sleep(4000);
                             }
                         }
                         else

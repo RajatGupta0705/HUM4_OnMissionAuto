@@ -58,14 +58,17 @@ public class AddToCart
             return false;
         }
     }
-    public List<WebElement> displayItemList()
+    public int availableItems()
+    {
+        return itmesList.size();
+    }
+    public void displayItemList()
     {
         System.out.println("Item list contains below items");
         for (WebElement e : itmesList)
         {
             System.out.printf(e.findElement(By.xpath("div[2]/div/a/div")).getText()+"\n");
         }
-        return itmesList;
     }
     public void addToCart(int itemsToBeAdded) throws Exception
     {
@@ -75,6 +78,8 @@ public class AddToCart
             if(text.equals("Add to cart"))
             {
                 try {
+                    this.driver.executeScript("arguments[0].scrollIntoView();",itmesList.get(i));
+                    Thread.sleep(500);
                     itmesList.get(i).findElement(By.xpath("div[2]/div[2]/button")).click();
                 } catch (Exception ex) {
                     System.out.println();

@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.sql.Driver;
 import java.time.Duration;
+import java.util.List;
 
 public class Dummy
 {
@@ -84,7 +85,24 @@ public class Dummy
 //        driver.get("https://www.amazon.com/");
 //        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("cricket kit", Keys.ENTER);
 //        if(driver.findElement(By.xpath("//span[text()='Featured']")).isDisplayed()) System.out.println("true");
-        System.out.println(System.getProperty("users.properties"));
+        RemoteWebDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        Thread.sleep(2000);
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        Thread.sleep(2000);
+
+        List<WebElement> c = driver.findElements(By.xpath("//*[@class='inventory_item']"));
+        for(int i=0;i<3;i++)
+        {
+            c.get(i).findElement(By.xpath("div[2]/div[2]/button")).click();
+        }
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@class ='shopping_cart_link']")).click();
+        List<WebElement> e = driver.findElements(By.xpath("//*[@class = 'cart_item']"));
+        System.out.println(e.get(0).findElement(By.xpath("div[2]/div[2]/button")).getText());
+        driver.close();
 
     }
 }
