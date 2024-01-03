@@ -29,11 +29,12 @@ public class BrowserUtilities
         }
         return this.driver;
     }
-    public  void launchSite(RemoteWebDriver driver, String url) throws Exception
+    public  void launchSite(RemoteWebDriver driver, String urlName) throws Exception
     {
         this.driver= driver;
         this.driver.manage().window().maximize();
         Thread.sleep(2000);
+        String url = PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\urls.properties" , urlName);
         this.driver.get(url);
     }
     public String getTitle(RemoteWebDriver driver)

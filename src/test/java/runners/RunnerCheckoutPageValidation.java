@@ -15,6 +15,9 @@ public class RunnerCheckoutPageValidation
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter No. of items tobe added in cart");
         int noOfItems = Integer.parseInt(sc.nextLine());
+        System.out.println("Enter no of items to be removed");
+        int noOfItemsTobeRvd= Integer.parseInt(sc.nextLine());
+        sc.close();
         String[] criterias = {"valid"};
         String[] browsers = {"chrome"};
 
@@ -26,7 +29,7 @@ public class RunnerCheckoutPageValidation
                 System.out.println("Running on " + browsers[i] + " browser");
                 BrowserUtilities bobj = new BrowserUtilities();
                 RemoteWebDriver driver = bobj.getDriver(browsers[i]);
-                bobj.launchSite(driver, "https://www.saucedemo.com/");
+                bobj.launchSite(driver, "SauceLabDemo");
                 Thread.sleep(2000);
                 LoginLogout lobj = new LoginLogout(driver);
                 lobj.loginIntoSite(cr, browsers[i]);
@@ -59,7 +62,7 @@ public class RunnerCheckoutPageValidation
                                 Thread.sleep(1000);
                                 cdv.clickOnCartButton();
                                 Thread.sleep(4000);
-                                cdv.removeCartItems();
+                                cdv.removeCartItems(noOfItemsTobeRvd);
                                 Thread.sleep(1000);
                                 cdv.validateCheckoutButton();
                                 checkout.checkoutPageValidation();

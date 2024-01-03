@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import utilities.PropertiesUtility;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CartDataVerification {
@@ -29,12 +31,14 @@ public class CartDataVerification {
     private WebElement checkoutButton;
     private CheckoutPageValidation checkout;
     private AddToCart addCart;
+    List<String> products;
     public CartDataVerification(RemoteWebDriver driver) {
 
         this.driver = driver;
         PageFactory.initElements(driver, this);
         addCart = new AddToCart(driver);
         checkout = new CheckoutPageValidation(driver);
+        products = new ArrayList<String>();
     }
     public void validateCartCount()
     {
@@ -122,38 +126,56 @@ public class CartDataVerification {
         else System.out.println("continue shopping button is not visible");
     }
 
-    public void removeCartItems() throws Exception
+    public void removeCartItems(int itemsTobeDeleted) throws Exception
     {
         int cartItems=0;
         int x= addCart.getCartCount();
-        String product1 =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product1");
-        String product2 =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product2");
-        for(WebElement a: cartItemList)
+        if (itemsTobeDeleted<=x)
         {
-            String p1=a.findElement(By.xpath("div[2]/a/div")).getText();
-            if(p1.equalsIgnoreCase(product1) || p1.equalsIgnoreCase(product2))
+            for(int i= 1;i<=itemsTobeDeleted;i++)
             {
-                Thread.sleep(2000);
-                a.findElement(By.xpath("div[2]/div[2]/button")).click();
-                cartItems++;
-                boolean var1=cartItemList.contains(a);
-                if(!var1)
+                products.add(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product"+i));
+            }
+            for(int i=0;i<products.size();i++)
+            {
+                int flag=0;
+                for(WebElement a: cartItemList)
                 {
-                    System.out.println(p1+" is successfully removed");
+                    String p1=a.findElement(By.xpath("div[2]/a/div")).getText();
+                    if(p1.equalsIgnoreCase(products.get(i)))
+                    {
+                        Thread.sleep(2000);
+                        a.findElement(By.xpath("div[2]/div[2]/button")).click();
+                        cartItems++;
+                        boolean var1=cartItemList.contains(a);
+                        if(!var1)
+                        {
+                            System.out.println(p1+" is successfully removed");
+                        }
+                        else System.out.println(p1+" is not removed");
+                        flag=1;
+                        break;
+                    }
                 }
-                else System.out.println(p1+" is not removed");
-
+                if (flag==0) System.out.println(products.get(i)+" is not available in the cart");
+            }
+            if (itemsTobeDeleted<x)
+            {
+                int y= addCart.getCartCount();
+                int z=x-y;
+                if(z==cartItems) System.out.println("Given no. of Cart items are removed successfully");
+                else System.out.println("Given no. of Cart items are not removed");
+            }
+            else
+            {
+                int z=x-0;
+                if(z==cartItems) System.out.println("Given no. of Cart items are removed successfully");
+                else System.out.println("Given no. of Cart items are not removed");
             }
 
-            else {
-                System.out.println("The given product is not available in the cart");
-
-            }
         }
-        int y= addCart.getCartCount();
-        int z=x-y;
-        if(z==cartItems) System.out.println("Given no. of Cart items are removed successfully");
-        else System.out.println("Given no. of Cart items are not removed");
+        else System.out.println("no of items to be removed are more than number of items available in the card. Please enter correct no of items");
+
     }
     public void validateCheckoutButton() throws Exception
     {
