@@ -104,8 +104,8 @@ public class Dummy
 //        List<WebElement> e = driver.findElements(By.xpath("//*[@class = 'cart_item']"));
 //        System.out.println(e.get(0).findElement(By.xpath("div[2]/div[2]/button")).getText());
 //        driver.close();
-        while(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product3")!=null)
-        System.out.println(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product3"));
+//        while(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product3")!=null)
+//        System.out.println(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product3"));
 
     }
 }

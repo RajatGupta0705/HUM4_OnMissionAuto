@@ -95,13 +95,13 @@ public class CheckoutOverviewValidation
             float f = Float.parseFloat(price);
             itemTotalAmt = itemTotalAmt + f;
         }
-        String [] tax = summary.findElement(By.xpath("div[7]")).getText().trim().split("$");
-        float f = Float.parseFloat(tax[1]);
+        System.out.println("total amount excluding tax = "+itemTotalAmt);
+      String [] tax = summary.findElement(By.xpath("div[7]")).getText().trim().split(" ");
+        float f = Float.parseFloat(tax[1].replace("$",""));
         totalAmt = itemTotalAmt + f;
 
-        String [] total = summary.findElement(By.xpath("div[8]")).getText().trim().split("$");
-        float t = Float.parseFloat(tax[1]);
-        System.out.println("total amount excluding tax = "+itemTotalAmt);
+        String [] total = summary.findElement(By.xpath("div[8]")).getText().trim().split(" ");
+        float t = Float.parseFloat(total[1].replace("$",""));
         System.out.println("total amount including tax = "+totalAmt);
         if (t == totalAmt)
             System.out.println("Total amount calculated correctly");
