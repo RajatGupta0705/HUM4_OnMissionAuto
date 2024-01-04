@@ -1,10 +1,7 @@
 package runners;
 
 import org.openqa.selenium.remote.RemoteWebDriver;
-import pageClasses.AddToCart;
-import pageClasses.CartDataVerification;
-import pageClasses.CheckoutPageValidation;
-import pageClasses.LoginLogout;
+import pageClasses.*;
 import utilities.BrowserUtilities;
 
 import java.util.Scanner;
@@ -33,6 +30,7 @@ public class RunnerPositveScnarioFlow
                 AddToCart aobj = new AddToCart(driver);
                 CartDataVerification cdv = new CartDataVerification(driver);
                 CheckoutPageValidation checkout = new CheckoutPageValidation(driver);
+                CheckoutOverviewValidation co =new CheckoutOverviewValidation(driver);
                 bobj.launchSite(driver, "SauceLabDemo");
                 Thread.sleep(2000);
                 lobj.loginIntoSite(cr, browsers[i]);
@@ -47,6 +45,16 @@ public class RunnerPositveScnarioFlow
                     Thread.sleep(1000);
                     cdv.validateCheckoutButton();
                     Thread.sleep(1000);
+                    checkout.fillUserDetails();
+                    Thread.sleep(2000);
+                    checkout.clickContinueButton();
+                    Thread.sleep(2000);
+                    co.validatePaymentInformation();
+                    co.validateShippingInformation();
+                    co.validatePriceTotal();
+                    Thread.sleep(2000);
+                    co.validateTotalAmount();
+                    Thread.sleep(3000);
                     lobj.logoutSite();
                     Thread.sleep(3000);
                     bobj.closeSite(driver);
