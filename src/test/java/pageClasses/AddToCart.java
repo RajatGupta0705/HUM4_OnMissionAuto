@@ -14,7 +14,7 @@ public class AddToCart
 {
     private RemoteWebDriver driver;
     @FindBy(xpath = "//span[text()='Products']")
-    private WebElement product;
+    public WebElement product;
     @FindBy(xpath = "//*[@class='inventory_list']")
     private WebElement inventory_list;
     @FindBys({@FindBy (xpath = "//*[@class='inventory_item']")})

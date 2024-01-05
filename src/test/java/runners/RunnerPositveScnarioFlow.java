@@ -31,6 +31,7 @@ public class RunnerPositveScnarioFlow
                 CartDataVerification cdv = new CartDataVerification(driver);
                 CheckoutPageValidation checkout = new CheckoutPageValidation(driver);
                 CheckoutOverviewValidation co =new CheckoutOverviewValidation(driver);
+                OrderSuccess orderSuccess = new OrderSuccess(driver);
                 bobj.launchSite(driver, "SauceLabDemo");
                 Thread.sleep(2000);
                 lobj.loginIntoSite(cr, browsers[i]);
@@ -55,6 +56,19 @@ public class RunnerPositveScnarioFlow
                     Thread.sleep(2000);
                     co.validateTotalAmount();
                     Thread.sleep(3000);
+                    co.validateCancelButtonOnOvervView();
+                    Thread.sleep(1000);
+                    cdv.clickOnCartButton();
+                    cdv.validateCheckoutButton();
+                    checkout.fillUserDetails();
+                    checkout.clickContinueButton();
+                    Thread.sleep(1000);
+                    co.validateFinishButton();
+                    orderSuccess.validateThankYouPage();
+                    Thread.sleep(1000);
+                    orderSuccess.validateThankYouMessage();
+                    Thread.sleep(1000);
+                    orderSuccess.validateBackHomeButton();
                     lobj.logoutSite();
                     Thread.sleep(3000);
                     bobj.closeSite(driver);

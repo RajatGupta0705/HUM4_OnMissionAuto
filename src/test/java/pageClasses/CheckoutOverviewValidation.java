@@ -1,5 +1,6 @@
 package pageClasses;
 
+import io.cucumber.java.bs.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v85.page.Page;
@@ -26,9 +27,14 @@ public class CheckoutOverviewValidation
     @FindBy(xpath = "//*[@class= 'shopping_cart_badge']")
     private WebElement cart_count;
 
+    private AddToCart addToCart;
+    private OrderSuccess orderSuccess;
+
     public CheckoutOverviewValidation(RemoteWebDriver driver)
     {
         this.driver= driver;
+        this.addToCart = new AddToCart(this.driver);
+        this.orderSuccess = new OrderSuccess(this.driver);
         PageFactory.initElements(driver, this);
     }
     public void overviewPageValidation()
@@ -107,6 +113,41 @@ public class CheckoutOverviewValidation
             System.out.println("Total amount calculated correctly");
         else
             System.out.println("Total amount is not calculated correctly");
-
+    }
+    public void validateCancelButtonOnOvervView() throws Exception
+    {
+        WebElement e= this.summary.findElement(By.xpath("div[9]/button[1]"));
+        if(e.isDisplayed())
+        {
+            this.driver.executeScript("arguments[0].scrollIntoView();",e);
+            Thread.sleep(1000);
+            e.click();
+            Thread.sleep(1000);
+            if(this.addToCart.product.isDisplayed())
+            {
+                this.driver.executeScript("arguments[0].scrollIntoView();",this.addToCart.product);
+                Thread.sleep(1000);
+                System.out.println("Cancel button is redirected to the product page. Working fine");
+            }
+            else System.out.println("Cancel button on the overview page is not working as expected");
+        }
+    }
+    public void validateFinishButton() throws Exception
+    {
+        WebElement e= this.summary.findElement(By.xpath("div[9]/button[2]"));
+        if(e.isDisplayed())
+        {
+            this.driver.executeScript("arguments[0].scrollIntoView();",e);
+            Thread.sleep(1000);
+            e.click();
+            Thread.sleep(1000);
+            if(this.orderSuccess.orderComplete.isDisplayed())
+            {
+                this.driver.executeScript("arguments[0].scrollIntoView();",this.orderSuccess.orderComplete);
+                Thread.sleep(1000);
+                System.out.println("Finish button is redirected to the complete page. Working fine");
+            }
+            else System.out.println("Finish button on the overview page is not working as expected");
+        }
     }
 }
