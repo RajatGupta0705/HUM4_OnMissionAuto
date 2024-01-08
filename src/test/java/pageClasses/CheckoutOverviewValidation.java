@@ -147,7 +147,7 @@ public class CheckoutOverviewValidation
                 Thread.sleep(1000);
                 System.out.println("Finish button is redirected to the complete page. Working fine");
             }
-            else System.out.println("Finish button on the overview page is not working as expected");
+            else System.out.println("Finish button on the overview page is not working as expected.");
         }
     }
 }
