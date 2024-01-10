@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class StepDef1
+public class DummyStepDef1
 {
     @Given("open login page")
     public void open_login_page() {

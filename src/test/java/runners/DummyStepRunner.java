@@ -8,7 +8,7 @@ glue={"glueCode"},
 monochrome = true,
 plugin = {"pretty", "html:target\\report"}
 )
-public class Step1Runner extends AbstractTestNGCucumberTests
+public class DummyStepRunner extends AbstractTestNGCucumberTests
 {
 
 }
