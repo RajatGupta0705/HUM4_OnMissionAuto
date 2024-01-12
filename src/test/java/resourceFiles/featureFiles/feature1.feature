@@ -5,7 +5,7 @@ Feature: Open URL and Login
   When Provide username and password with "valid" criteria in "chrome" browser and login to the site
   Then Product page should be displayed
 
-  @smoketest
+ # @smoketest
   Scenario: Add products in the Cart
   Given Product page should be displayed
   And Product list should be displayed
@@ -20,6 +20,7 @@ Feature: Open URL and Login
   And Each item should be a clickable link
   And Product price against each items should be displayed
   And Remove button against each items should be displayed
+
 
 
 

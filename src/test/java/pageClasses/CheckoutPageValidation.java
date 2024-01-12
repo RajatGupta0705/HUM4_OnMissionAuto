@@ -83,4 +83,10 @@ public class CheckoutPageValidation
         }
         else System.out.println("cancel button is not working as expected");
     }
+    public void verifyCheckoutPage() throws Exception
+    {
+        if (checkoutPage.isDisplayed()) {
+            System.out.println("User is on Checkout page");
+        } else System.out.println("User is not on Checkout page");
+    }
 }

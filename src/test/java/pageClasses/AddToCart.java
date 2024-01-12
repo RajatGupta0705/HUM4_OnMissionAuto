@@ -70,7 +70,7 @@ public class AddToCart
             System.out.printf(e.findElement(By.xpath("div[2]/div/a/div")).getText()+"\n");
         }
     }
-    public void addToCart(int itemsToBeAdded) throws Exception
+    public void addToCart(int itemsToBeAdded)
     {
         int count=0;
         for(int i=0; i<itemsToBeAdded; i++)
@@ -81,7 +81,6 @@ public class AddToCart
                 try
                 {
                     this.driver.executeScript("arguments[0].scrollIntoView();",itmesList.get(i));
-                    Thread.sleep(500);
                     itmesList.get(i).findElement(By.xpath("div[2]/div[2]/button")).click();
                     count++;
                 }
@@ -91,7 +90,6 @@ public class AddToCart
                 }
             }
             else System.out.println(text+" already added into the cart");
-            Thread.sleep(2000);
         }
         System.out.println(count+" items are added into the cart");
 

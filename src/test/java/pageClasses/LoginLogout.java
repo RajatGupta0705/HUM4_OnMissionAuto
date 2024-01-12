@@ -34,9 +34,9 @@ public class LoginLogout
             String valid_user1 =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\users.properties" , "valid_user");
             String password1 =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\users.properties" , "password");
             this.driver.findElement(username).sendKeys(valid_user1);
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             this.driver.findElement(password).sendKeys(password1);
-            Thread.sleep(1000);
+           // Thread.sleep(1000);
             this.driver.findElement(login).click();
             boolean valid_user_success = this.driver.findElement(menu).isDisplayed();
             if(valid_user_success){
@@ -52,9 +52,9 @@ public class LoginLogout
             String valid_user2 =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\users.properties" , "locked_user");
             String password2 =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\users.properties" , "password");
             this.driver.findElement(username).sendKeys(valid_user2);
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             this.driver.findElement(password).sendKeys(password2);
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             this.driver.findElement(login).click();
             try
             {
@@ -78,7 +78,7 @@ public class LoginLogout
     {
         this.driver.executeScript("arguments[0].scrollIntoView();",this.driver.findElement(menu));
         this.driver.findElement(menu).click();
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
         this.driver.findElement(logout).click();
         try
         {

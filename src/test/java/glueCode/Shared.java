@@ -5,9 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.asserts.SoftAssert;
-import pageClasses.AddToCart;
-import pageClasses.CartDataVerification;
-import pageClasses.LoginLogout;
+import pageClasses.*;
 import utilities.BrowserUtilities;
 
 import java.util.Random;
@@ -21,6 +19,8 @@ public class Shared
     public LoginLogout lobj;
     public AddToCart aobj;
     public CartDataVerification cartdataobj;
+    public CheckoutPageValidation checkoutpv;
+    public CheckoutOverviewValidation checkoutOverviewV;
     public int countBeforeProductSeletion;
     public int countAfterProductSeletion;
     public int largestNumber=6;

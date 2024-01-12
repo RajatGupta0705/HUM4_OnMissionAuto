@@ -184,16 +184,9 @@ public class CartDataVerification {
             if(checkoutButton.isEnabled())
             {
                 checkoutButton.click();
-                if(checkout.checkoutPage.isDisplayed())
-                {
-                  Thread.sleep(1000);
-                  System.out.println("\"checkout\" button is working fine");
-                }
-                else System.out.println("\"checkout\" is not working as expected");
             }
             else System.out.println("checkout button is not enabled");
         }
         else System.out.println("checkout button is not visible");
     }
-
 }
