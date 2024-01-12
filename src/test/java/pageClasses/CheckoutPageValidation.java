@@ -45,9 +45,9 @@ public class CheckoutPageValidation
     }
     public void fillUserDetails() throws Exception
     {
-        String fname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\userDetails.properties" , "FirstName");
-        String lname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\userDetails.properties" , "LastName");
-        String zip =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\userDetails.properties" , "ZipCode");
+        String fname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\userDetails.properties" , "FirstName");
+        String lname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\userDetails.properties" , "LastName");
+        String zip =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\userDetails.properties" , "ZipCode");
         try {
             this.fname.sendKeys(fname);
             this.lname.sendKeys(lname);
@@ -82,5 +82,11 @@ public class CheckoutPageValidation
             System.out.println("cancel button is working fine");
         }
         else System.out.println("cancel button is not working as expected");
+    }
+    public void verifyCheckoutPage() throws Exception
+    {
+        if (checkoutPage.isDisplayed()) {
+            System.out.println("User is on Checkout page");
+        } else System.out.println("User is not on Checkout page");
     }
 }
