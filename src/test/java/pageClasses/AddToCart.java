@@ -72,27 +72,41 @@ public class AddToCart
     }
     public void addToCart(int itemsToBeAdded) throws Exception
     {
+        int count=0;
         for(int i=0; i<itemsToBeAdded; i++)
         {
             String text= itmesList.get(i).findElement(By.xpath("div[2]/div[2]/button")).getText();
             if(text.equals("Add to cart"))
             {
-                try {
+                try
+                {
                     this.driver.executeScript("arguments[0].scrollIntoView();",itmesList.get(i));
                     Thread.sleep(500);
                     itmesList.get(i).findElement(By.xpath("div[2]/div[2]/button")).click();
-                } catch (Exception ex) {
-                    System.out.println();
+                    count++;
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
                 }
             }
-            else System.out.println("item already added into the cart");
+            else System.out.println(text+" already added into the cart");
             Thread.sleep(2000);
         }
+        System.out.println(count+" items are added into the cart");
 
     }
     public int getCartCount()
     {
-        int count = Integer.parseInt(this.cart_count.getText());
-        return count;
+        try
+        {
+            int count = Integer.parseInt(this.cart_count.getText());
+            return count;
+        }
+        catch (Exception ex)
+        {
+            return 0;
+        }
+
     }
 }

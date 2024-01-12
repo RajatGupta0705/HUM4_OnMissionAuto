@@ -45,9 +45,9 @@ public class CheckoutPageValidation
     }
     public void fillUserDetails() throws Exception
     {
-        String fname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\userDetails.properties" , "FirstName");
-        String lname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\userDetails.properties" , "LastName");
-        String zip =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\userDetails.properties" , "ZipCode");
+        String fname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\userDetails.properties" , "FirstName");
+        String lname =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\userDetails.properties" , "LastName");
+        String zip =  PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\dataSource\\userDetails.properties" , "ZipCode");
         try {
             this.fname.sendKeys(fname);
             this.lname.sendKeys(lname);
