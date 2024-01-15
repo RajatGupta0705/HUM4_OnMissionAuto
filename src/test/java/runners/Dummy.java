@@ -15,6 +15,7 @@ import utilities.PropertiesUtility;
 import java.sql.Driver;
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 public class Dummy
 {
@@ -107,5 +108,14 @@ public class Dummy
 //        while(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product3")!=null)
 //        System.out.println(PropertiesUtility.getPropertyValue("src\\test\\java\\resourceFiles\\productItemsToBeRemoved.properties" , "product3"));
 
+
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://www.saucedemo.com");
+
+        int x=6;
+        int y=1;
+        Random r = new Random();
+        r.nextInt(x);
+        System.out.println(r.nextInt(x-y+1)+y);
     }
 }

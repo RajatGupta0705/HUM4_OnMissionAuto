@@ -1,0 +1,7 @@
+<suite name = "testSuite1">
+    <test name ="firstTest">
+        <classes>
+            <class name= "runners.RunnerStepDef1"/>
+        </classes>
+    </test>
+</suite>

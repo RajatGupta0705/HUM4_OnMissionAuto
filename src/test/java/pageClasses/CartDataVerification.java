@@ -22,7 +22,7 @@ public class CartDataVerification {
     public WebElement cartPage;
 
     @FindBys({@FindBy(xpath = "//*[@class = 'cart_item']")})
-    private List<WebElement> cartItemList;
+    public List<WebElement> cartItemList;
 
     @FindBy(id="continue-shopping")
     private  WebElement continueShoppingButton;
@@ -55,7 +55,6 @@ public class CartDataVerification {
         this.driver.executeScript("arguments[0].scrollIntoView();",cartIcon);
         Thread.sleep(2000);
         this.cartIcon.click();
-        Thread.sleep(2000);
         if(cartPage.isDisplayed()) System.out.println("user is successfully landed on cart page");
         else System.out.println("user is not able to navigate to cart page");
     }
@@ -185,16 +184,9 @@ public class CartDataVerification {
             if(checkoutButton.isEnabled())
             {
                 checkoutButton.click();
-                if(checkout.checkoutPage.isDisplayed())
-                {
-                  Thread.sleep(1000);
-                  System.out.println("\"checkout\" button is working fine");
-                }
-                else System.out.println("\"checkout\" is not working as expected");
             }
             else System.out.println("checkout button is not enabled");
         }
         else System.out.println("checkout button is not visible");
     }
-
 }
