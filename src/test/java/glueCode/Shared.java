@@ -21,6 +21,7 @@ public class Shared
     public CartDataVerification cartdataobj;
     public CheckoutPageValidation checkoutpv;
     public CheckoutOverviewValidation checkoutOverviewV;
+    public OrderSuccess os;
     public int countBeforeProductSeletion;
     public int countAfterProductSeletion;
     public int largestNumber=6;
@@ -32,11 +33,11 @@ public class Shared
         s.log(s.getName()+" is going started");
     }
     @After
-    public void method2(Scenario sobj)
+    public void method2(Scenario sobj) throws Exception
     {
         this.s =sobj;
         s.log(s.getName()+" is "+s.getStatus().name());
+        this.lobj.logoutSite();
         this.driver.close();
     }
-
 }
