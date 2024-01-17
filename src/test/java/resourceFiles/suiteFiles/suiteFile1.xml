@@ -1,7 +1,10 @@
 <suite name = "testSuite1">
     <test name ="firstTest">
         <classes>
-            <class name= "runners.RunnerStepDef1"/>
+            <class name= "runners.BDDRunner1"/>
+            <class name= "runners.BDDRunner2"/>
+            <class name= "runners.BDDRunner3"/>
+            <class name= "runners.BDDRunnerFull"/>
         </classes>
     </test>
 </suite>

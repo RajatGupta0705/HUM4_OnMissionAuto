@@ -5,13 +5,13 @@ Feature: Open URL and Login
   When Provide username and password with "valid" criteria in "chrome" browser and login to the site
   Then Product page should be displayed
 
- # @smoketest
+  @smoketest
   Scenario: Add products in the Cart
   Given Product page should be displayed
   And Product list should be displayed
   When User adds the products into Cart
   Then Cart count should get increase
-
+  @regression @smoketest
   Scenario: Cart details verification
   When User adds the products into Cart
   When User clicks on cart icon

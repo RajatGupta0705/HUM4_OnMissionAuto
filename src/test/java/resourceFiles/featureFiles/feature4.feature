@@ -11,7 +11,7 @@ Feature: Thank you Page validation
     And User should enter all the user details
     And User clicks on Continue button
     Then User should get redirected to Checkout Overview page
-
+  @smoketest
   Scenario: Validate Thank you page
     When clicking on finish button
     Then order complete page should be displayed

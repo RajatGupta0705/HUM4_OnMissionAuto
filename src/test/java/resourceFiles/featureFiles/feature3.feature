@@ -11,13 +11,13 @@ Feature: Checkout Overview Page validation
     And User should enter all the user details
     And User clicks on Continue button
     Then User should get redirected to Checkout Overview page
-
+  @smoketest
   Scenario: Validate checkout information on overview page
     When Items list is visible
     Then Cart count should be same as list item count
     And Payment information should be displayed
     And Shipping information should be displayed
-
+  @regression
   Scenario: Validate Total Amount to be paid
     When Price total should be displayed
     Then validate total amount is calculated is correctly with tax
