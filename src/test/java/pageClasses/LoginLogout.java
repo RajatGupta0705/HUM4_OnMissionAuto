@@ -78,7 +78,7 @@ public class LoginLogout
     {
         this.driver.executeScript("arguments[0].scrollIntoView();",this.driver.findElement(menu));
         this.driver.findElement(menu).click();
-        //Thread.sleep(2000);
+        Thread.sleep(2000);
         this.driver.findElement(logout).click();
         try
         {

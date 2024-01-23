@@ -6,9 +6,9 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(features = {"src/test/java/resourceFiles/featureFiles"},
        // tags = "@smoketest",
         glue={"glueCode"},
-        monochrome = true,
+        monochrome = false,
         plugin = {"pretty", "html:target\\report"}
 )
-public class RunnerStepDef1 extends AbstractTestNGCucumberTests
+public class BDDRunnerFull extends AbstractTestNGCucumberTests
 {
 }

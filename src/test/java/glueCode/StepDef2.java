@@ -30,21 +30,17 @@ public class StepDef2
         this.sh.checkoutpv.verifyCheckoutPage();
     }
     @When("User should enter all the user details")
-    public void userFillDetails() throws Exception{
+    public void userFillDetails() throws Exception
+    {
         this.sh.checkoutpv.fillUserDetails();
     }
-
     @When("User clicks on Continue button")
     public void userClickonContinueButton() throws Exception {
         this.sh.checkoutpv.clickContinueButton();
     }
-
     @Then("User should get redirected to Checkout Overview page")
     public void userRedirectToOverviewPage() throws Exception {
    this.sh.checkoutOverviewV=new CheckoutOverviewValidation(this.sh.driver);
    Assert.assertTrue(this.sh.checkoutOverviewV.overViewPage.isDisplayed());
     }
-
-
-
 }
